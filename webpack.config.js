@@ -4,7 +4,7 @@ const webpack = require('webpack');
 var browserConfig = {
     target: 'web',
     externals:[{
-        xmlhttprequest: 'XMLHttpRequest'
+        request: 'request'
     }],
     entry: {
         "youtube-api-v3-search": './src/browser.js',

@@ -1,12 +1,12 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("XMLHttpRequest"));
+		module.exports = factory(require("request"));
 	else if(typeof define === 'function' && define.amd)
-		define(["XMLHttpRequest"], factory);
+		define(["request"], factory);
 	else if(typeof exports === 'object')
-		exports["searchYoutube"] = factory(require("XMLHttpRequest"));
+		exports["searchYoutube"] = factory(require("request"));
 	else
-		root["searchYoutube"] = factory(root["XMLHttpRequest"]);
+		root["searchYoutube"] = factory(root["request"]);
 })(typeof self !== 'undefined' ? self : this, function(__WEBPACK_EXTERNAL_MODULE_2__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -93,27 +93,17 @@ module.exports = function (key, options, cb) {
 "use strict";
 
 
-var XMLHttpRequest = __webpack_require__(2).XMLHttpRequest;
+var request = __webpack_require__(2);
 
 module.exports = function (url) {
-    var req = new XMLHttpRequest();
     return new Promise(function (resolve, reject) {
-        req.onreadystatechange = function () {
-            if (this.readyState == 4) {
-                if (this.status == 200) {
-                    var response = JSON.parse(this.response);
-                    resolve(response);
-                } else {
-                    var err = JSON.parse(this.response);
-                    reject(err);
-                }
+        request(url, function (error, response, body) {
+            if (!error && response.statusCode === 200) {
+                resolve(response);
+            } else {
+                reject(new Error(error));
             }
-        };
-        req.onerror = function (e) {
-            reject(new Error(this.statusText));
-        };
-        req.open('GET', url, true);
-        req.send(null);
+        });
     });
 };
 
