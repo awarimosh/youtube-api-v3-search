@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 var browserConfig = {
-  target: 'web',
+  target: 'node',
   entry:{
    "youtube-api-v3-search": './src/browser.js',
    "youtube-api-v3-search.min": "./src/browser.js",

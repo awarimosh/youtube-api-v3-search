@@ -1,4 +1,4 @@
-
+const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 module.exports = function(url){
     const req  = new XMLHttpRequest();
