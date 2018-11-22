@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory();
+		module.exports = factory(require("XMLHttpRequest"));
 	else if(typeof define === 'function' && define.amd)
-		define([], factory);
+		define(["XMLHttpRequest"], factory);
 	else if(typeof exports === 'object')
-		exports["searchYoutube"] = factory();
+		exports["searchYoutube"] = factory(require("XMLHttpRequest"));
 	else
-		root["searchYoutube"] = factory();
-})(typeof self !== 'undefined' ? self : this, function() {
+		root["searchYoutube"] = factory(root["XMLHttpRequest"]);
+})(typeof self !== 'undefined' ? self : this, function(__WEBPACK_EXTERNAL_MODULE_2__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -81,7 +81,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 var request = __webpack_require__(1);
-var common = __webpack_require__(2);
+var common = __webpack_require__(3);
 module.exports = function (key, options, cb) {
   return common(request, key, options, cb);
 };
@@ -92,6 +92,8 @@ module.exports = function (key, options, cb) {
 
 "use strict";
 
+
+var XMLHttpRequest = __webpack_require__(2).XMLHttpRequest;
 
 module.exports = function (url) {
     var req = new XMLHttpRequest();
@@ -117,13 +119,19 @@ module.exports = function (url) {
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_2__;
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var config = __webpack_require__(3);
-var querystring = __webpack_require__(4);
+var config = __webpack_require__(4);
+var querystring = __webpack_require__(5);
 
 module.exports = function (request, key, options, cb) {
   if (!key && typeof cb === 'function') return cb(new Error('API Key is required'));else if (!key) throw new Error('API Key is required');
@@ -144,7 +152,7 @@ function fillData(key, options) {
 }
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -158,18 +166,18 @@ module.exports.options = {
 };
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-exports.decode = exports.parse = __webpack_require__(5);
-exports.encode = exports.stringify = __webpack_require__(6);
+exports.decode = exports.parse = __webpack_require__(6);
+exports.encode = exports.stringify = __webpack_require__(7);
 
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -260,7 +268,7 @@ var isArray = Array.isArray || function (xs) {
 
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
