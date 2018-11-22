@@ -9,7 +9,7 @@ var browserConfig = {
         }
     },
     externals:[{
-        xmlhttprequest: '{XMLHttpRequest:XMLHttpRequest}'
+        xmlhttprequest: 'xmlhttprequest'
     }],
     entry: {
         "youtube-api-v3-search": './src/browser.js',
