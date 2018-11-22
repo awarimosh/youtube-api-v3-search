@@ -1,7 +1,7 @@
-const xhr = require("xhr");
+const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 module.exports = function(url){
-    const req  = new xhr();
+    const req  = new XMLHttpRequest();
     return new Promise(( resolve , reject )=>{
       req.onreadystatechange = function() {
         if (this.readyState == 4){

@@ -2,12 +2,15 @@ const path = require('path');
 const webpack = require('webpack');
 
 var browserConfig = {
+    target: 'web',
     resolve: {
         alias: {
-            request$: "xhr"
+            request$: 'xmlhttprequest'
         }
     },
-    target: 'web',
+    externals:[{
+        xmlhttprequest: '{XMLHttpRequest:XMLHttpRequest}'
+    }],
     entry: {
         "youtube-api-v3-search": './src/browser.js',
         "youtube-api-v3-search.min": "./src/browser.js",
